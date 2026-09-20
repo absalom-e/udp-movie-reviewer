@@ -83,3 +83,31 @@ color : rgb(255,255,255);
 border-color : rgb(0,160,255);
 
 }
+.index{
+
+background-color : rgb(255,255,255);
+color : rgb(0,140,255);
+border-color : rgb(0,160,255);
+border-style : solid;
+height : 35px;
+width : 120px;
+border-radius : 3px;
+cursor : pointer;
+font-size : 14px;
+transition : 0.2s;
+
+}
+
+.index:active{
+
+    opacity : 0.7;
+
+}
+
+.index:hover{
+
+background-color : rgb(0,160,255);
+color : rgb(255,255,255);
+border-color : rgb(0,160,255);
+
+}
