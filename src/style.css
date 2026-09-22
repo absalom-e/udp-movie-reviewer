@@ -111,3 +111,31 @@ color : rgb(255,255,255);
 border-color : rgb(0,160,255);
 
 }
+.Catalogo{
+
+background-color : rgb(255,255,255);
+color : rgb(0,140,255);
+border-color : rgb(0,160,255);
+border-style : solid;
+height : 35px;
+width : 120px;
+border-radius : 3px;
+cursor : pointer;
+font-size : 14px;
+transition : 0.2s;
+
+}
+
+.Catalogo:active{
+
+    opacity : 0.7;
+
+}
+
+.Catalogo:hover{
+
+background-color : rgb(0,160,255);
+color : rgb(255,255,255);
+border-color : rgb(0,160,255);
+
+}
