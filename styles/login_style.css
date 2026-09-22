@@ -1,3 +1,31 @@
+.Reseña{
+
+background-color : rgb(255,255,255);
+color : rgb(0,140,255);
+border-color : rgb(0,160,255);
+border-style : solid;
+height : 35px;
+width : 140px;
+border-radius : 3px;
+cursor : pointer;
+font-size : 14px;
+transition : 0.2s;
+
+}
+
+.Reseña:active{
+
+    opacity : 0.7;
+
+}
+
+.Reseña:hover{
+
+background-color : rgb(0,160,255);
+color : rgb(255,255,255);
+border-color : rgb(0,160,255);
+
+}
 .index{
 
 background-color : rgb(255,255,255);
@@ -32,54 +60,28 @@ border-color : rgb(0,160,255);
   margin: 0 auto;      
   display: flex;
   flex-direction: column;
-  gap: 15px;            
-  align-items: center;  
+  gap: 15px; 
+
 }
 
-.register_mail {
+.login_mail,
+.login_password {
   display: flex;
   align-items: center; 
+  width: 100%; 
 }
 
-.register_mail label {
-  width: 100px; 
-  text-align: center;
-  margin-right: 10px;
-}
-
-.register_mail input {
-  flex: 1; 
-  padding: 6px;
-}
-
-.register_password {
-  display: flex;
-  align-items: center; 
-}
-
-.register_password label {
+.login_mail label,
+.login_password label {
   width: 100px; 
   text-align: right;
   margin-right: 10px;
 }
 
-.register_password input {
+.login_mail input,
+.login_password input {
   flex: 1; 
   padding: 6px;
-}
+  box-sizing: border-box;
 
-.register_name {
-  display: flex;
-  align-items: center; 
-}
-
-.register_name label {
-  width: 100px; 
-  text-align: right;
-  margin-right: 10px;
-}
-
-.register_name input {
-  flex: 1; 
-  padding: 6px;
 }
