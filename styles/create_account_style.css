@@ -1,0 +1,59 @@
+.index{
+
+background-color : rgb(255,255,255);
+color : rgb(0,140,255);
+border-color : rgb(0,160,255);
+border-style : solid;
+height : 35px;
+width : 120px;
+border-radius : 3px;
+cursor : pointer;
+font-size : 14px;
+transition : 0.2s;
+
+}
+
+.index:active{
+
+    opacity : 0.7;
+
+}
+
+.index:hover{
+
+background-color : rgb(0,160,255);
+color : rgb(255,255,255);
+border-color : rgb(0,160,255);
+
+}
+
+.form {
+  width: 320px;       
+  margin: 0 auto;      
+  display: flex;
+  flex-direction: column;
+  gap: 15px;            
+  align-items: center;  
+}
+
+.register_mail,
+.register_password,
+.register_name {
+  display: flex;
+  align-items: center; 
+}
+
+.register_mail label,
+.register_password label,
+.register_name label {
+  width: 100px; 
+  text-align: center;
+  margin-right: 10px;
+}
+
+.register_mail input,
+.register_password input,
+.register_name input {
+  flex: 1; 
+  padding: 6px;
+}

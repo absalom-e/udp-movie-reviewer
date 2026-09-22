@@ -54,3 +54,34 @@ color : rgb(255,255,255);
 border-color : rgb(0,160,255);
 
 }
+
+.form {
+  width: 320px;       
+  margin: 0 auto;      
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+
+}
+
+.login_mail,
+.login_password {
+  display: flex;
+  align-items: center; 
+  width: 100%; 
+}
+
+.login_mail label,
+.login_password label {
+  width: 100px; 
+  text-align: right;
+  margin-right: 10px;
+}
+
+.login_mail input,
+.login_password input {
+  flex: 1; 
+  padding: 6px;
+  box-sizing: border-box;
+
+}

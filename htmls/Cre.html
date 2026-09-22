@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="/styles/create_account_style.css">
+
+    <nav align = "left" style = "margin-left:30px">
+
+      <a href="../index.html">  
+        <button class = "index">volver al inicio</button> 
+      </a>
+
+    </nav>
+  
+</head>
+
+<body style = "padding-top: 20px">
+
+ <div style = "text-align:center">
+
+      <br> 
+  <div class = "form">    
+  <form action="/CrearCuenta" method="post">
+
+    <h1>Crea tu cuenta</h1>
+    
+    <div class = "register_mail">
+      <label for="mail">Correo</label>
+      <input type="email" id="mail" name="mail" required>
+    </div>
+    
+    <div class = "register_password">
+      <label for="clave">Contraseña</label>
+      <input type="password" id="clave" name="clave" minlength="8">
+    </div>
+
+    <div class = "register_name">
+       <label for="Nombre">Nombre</label>
+       <input type="text" id="Nombre" name="Nombre" required>
+    </div>
+    
+    <br>
+    <button type="submit">Crear cuenta</button>
+ 
+  </form>
+  </div>
+
+ </div>
+
+</body>
