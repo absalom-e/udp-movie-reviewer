@@ -6,44 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesion</title>
     <link rel="stylesheet" href="/styles/login_style.css">
-
-    <nav align = "left" style = "margin-left:30px">
-
-      <a href="../index.html">  
-        <button class = "index">volver al inicio</button> 
-      </a> 
-
-    </nav>
-
 </head>
 
 <body style = "padding-top: 20px">
 
-    <div style = "text-align:center">
+  <header style="margin-left: 30px">
+    <nav aria-label="Navegación principal">
+       <a href="../index.html">  
+        <button class = "index">volver al inicio</button> 
+       </a> 
+    </nav>
+  </header>
 
-    <H1>Iniciar sesion</H1>
+  <main style="text-align: center">
+    <section class="form">
+    <h1>Iniciar sesión</h1>
 
-      <div class = "form">   
-        <form action="/registro" method="post">
 
-         <div class = "login_mail">
-           <label for="mail">Correo</label>
-           <input type="email" id="mail" name="mail" required>
-         </div>
-
-  <br>
-
-        <div class = "login_pass">
-          <label for="clave">Contraseña</label>
-          <input type="password" id="clave" name="clave" minlength="8">
-        </div>
-
-  <br>
-        <button type="submit">Iniciar sesion</button>
- 
-</form>
-   
-
+  <form action="/login" method="post">
+    <div class="login_mail">
+      <label for="mail">Correo</label>
+      <input type="email" id="mail" name="mail" required>
     </div>
 
-</body>
+    <div class="login_pass">
+      <label for="clave">Contraseña</label>
+      <input type="password" id="clave" name="clave" minlength="8" required>
+    </div>
+
+  <button type="submit">Iniciar sesión</button>
+
+      </form>
+      </section>
+    </main>
+  </body>
+</html>

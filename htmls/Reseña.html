@@ -6,28 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Reseña</title>
     <link rel="stylesheet" href="/styles/reseña_style.css">
-
-       <nav align = "left" style = "margin-left:30px">
-        <a href="../index.html">  
-        <button class = "index">volver al inicio</button> 
-        </a> 
-       </nav>
-
   </head>
   <body style = "padding-top: 20px">
 
-    <div style = "text-align:center">
-    <H1>Crear reseña waton</H1>
-    <form>  
-       <label for="nombre de la pelicula">Nombre de la pelicula:</label>
-  <input type="text" id="nombre de la pelicula" name="nombre de la pelicula" required>
- <br>
-    <textarea id="Rreseña" rows="20" cols="100" required placeholder="Mensaje fantasma"></textarea>
-   <br>
-    <button class = "Boton reseña">Enviar reseña</button> 
-    </form>
-    <br>
-     <a href="catalogo.html">  
-    <button class = "Catalogo">Ver catalogo</button> 
-    </a> 
-    </body>
+    <header style="margin-left: 30px">
+      <nav aria-label="Navegación principal">
+        <a href="../index.html">  
+         <button class = "index">volver al inicio</button> 
+        </a> 
+      </nav>
+    </header>
+
+
+    <main style="text-align: center">
+    <section class="form-resena">
+    <h1>Crear reseña</h1>
+
+    <form id="form-resena">  
+  
+   <div class="nombre-pelicula">
+     <label for="pelicula">Nombre de la película:</label>
+     <input type="text" id="pelicula" name="pelicula" required>
+   </div>
+  
+  <div class="reseña">
+    <label for="resena">Tu reseña:</label>
+    <textarea 
+      id="resena" 
+      name="resena" 
+      rows="2" 
+      cols="10" 
+      required placeholder="Escribe aquí tu opinión sobre la película..."></textarea>
+  </div>
+  
+  <button type="submit" class="btn-enviar">Enviar reseña</button>
+
+</form>
+</section>
+
+<section style="margin-top: 20px">
+  <a href="catalogo.html">  
+  <button class = "Catalogo">Ver catalogo</button> 
+  </a> 
+</section>
+   
+    </main>
+  </body>
+</html>
