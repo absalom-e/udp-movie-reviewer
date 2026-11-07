@@ -1,31 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catalogo de peliculas</title>
     <link rel="stylesheet" href="/styles/catalogo_style.css">
-
-    <nav align = "left" style = "margin-left:30px">
-       <a href="../index.html">  
-         <button class = "index">volver al inicio</button> 
-       </a> 
-     </nav>
-  <br>
 </head>
 
 
 <body style = "padding-top: 20px"  >
-      <div style = "text-align:center">
-      <h2>Catalogo de peliculas</h2>
-      <p> Aqui va a estar el catalogo de todas las peliculas con su propio buscador y filtro por genero. Apareceran las peliculas con mejor ranking
-      y tambien va a haber un ranking de criticos, etc.
-      <br>
-      la idea es que al precionar una pelicula salga informacion de ella, reseñas ordenadas por calificacion y la opcion de hacer una reseña.</p>
-      <br>
-      <a href="Reseña.html">  
-      <button class = "Reseña">Hacer una reseña</button> 
-      </a>
-    </div>
+
+    <header style="margin-left: 30px;">
+      <nav aria-label="Navegación principal">
+        <a href="../index.html">  
+         <button class = "index">volver al inicio</button> 
+        </a> 
+      </nav>
+
+
+      <main style="text-align: center">
+
+      <section id="catalogo-info">
+        <h1>Catálogo de Películas</h1>
+        <p>
+          Aquí va a estar el catálogo de todas las películas con su propio buscador y filtro por género.
+          Aparecerán las películas con mejor ranking y también va a haber un ranking de críticos.
+        </p>
+        <p>
+          La idea es que al presionar una película salga información de ella, reseñas ordenadas por calificación
+          y la opción de hacer una reseña.
+        </p>
+      </section>
+
+      <section id="catalogo-acciones">
+        <a href="Reseña.html">  
+        <button class = "Reseña">Hacer una reseña</button> 
+        </a>
+      </section>
+
 </body>
