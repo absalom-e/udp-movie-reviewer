@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "titulo": "Avengers : Endgame.",
+    "director": "Anthony Russo y Joe Russo.",
+    "anio": 2019 ,
+    "genero": "Ciencia Ficción.",
+    "calificacion": 9.5,
+    "sinopsis": "Después de los devastadores eventos de Infinity War, el universo se encuentra en ruinas debido a las acciones de Thanos. Con la ayuda de los aliados que quedaron en pie, los Vengadores supervivientes se reúnen una vez más para intentar revertir el daño causado por el Titán Loco, viajando a través del tiempo para recuperar las Gemas del Infinito y restaurar de forma definitiva el orden y el equilibrio en todo el cosmos, sin importar las consecuencias o los sacrificios necesarios.",
+    "poster": "https://m.media-amazon.com/images/I/91-UCbbhoiL._AC_SY741_.jpg"
+  },
+  {
+    "id": 2,
+    "titulo": "Superman.",
+    "director": "James Gunn.",
+    "anio": 2025,
+    "genero": "Ciencia Ficción.",
+    "calificacion": 8,
+    "sinopsis": "En un mundo cínico que ha perdido la fe en la bondad, Superman lucha por reconciliar su herencia kryptoniana con su crianza humana en Smallville como Clark Kent. Mientras protege a la humanidad, encarna la verdad, la justicia y el estilo americano, desafiando una era que considera estos valores obsoletos. Reinicio del universo DC en cine bajo la supervisión y dirección de James Gunn.",
+    "poster": "https://images.thedirect.com/media/photos/image_1_J06LATb.png"
+  },
+  {
+    "id": 3,
+    "titulo": "Micheal.",
+    "director": "Antoine Fuqua.",
+    "anio": 2026,
+    "genero": "Drama Musical Biografico.",
+    "calificacion": 7.3,
+    "sinopsis": "Narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta su transformación en el artista más famoso del mundo.",
+    "poster": "https://image.tmdb.org/t/p/original/3Qud19bBUrrJAzy0Ilm8gRJlJXP.jpg"
+  },
+  {
+    "id": 4,
+    "titulo": "Steel Ball Run: JoJo's Bizarre Adventure (TV Series 2026).",
+    "director": "Yasuhiro Kimura, Hideya Takahashi y Toshiyuki Kato.",
+    "anio": 2026,
+    "genero": "Shounen Anime.",
+    "calificacion": 9.3,
+    "sinopsis": "Un ex jinete parapléjico se une a un forajido para competir en la primera carrera de caballos transcontinental a través de Norteamérica en el siglo XIX.",
+    "poster": "https://i.ebayimg.com/images/g/7rUAAeSw9hFpw6et/s-l1200.png"
+  },
+  {
+    "id": 5,
+    "titulo": "Ben 10: Omniverse.",
+    "director": "Matt Youngberg.",
+    "anio": 2012,
+    "genero": "Acción",
+    "calificacion": 6.7,
+    "sinopsis": "Las aventuras continúan para Ben Tennyson y su nuevo compañero, Rook Blonko.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjE1N2EzYzQtMWExOC00N2FjLWEwYjMtNjdlNWUwYzQwMzEyXkEyXkFqcGc@._V1_.jpg"
+  },
+  {
+    "id": 6,
+    "titulo": "Emoji: La Película.",
+    "director": "Tony Leondis.",
+    "anio": 2017,
+    "genero": "Animación",
+    "calificacion": 3.5,
+    "sinopsis": "Gene, un emoji con múltiples expresiones, emprende un viaje para convertirse en un emoji normal.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzczMzQ0MDYzMV5BMl5BanBnXkFtZTgwODUyMjI5MDI@._V1_.jpg"
+  },
+   {
+    "id": 7,
+    "titulo": "Sonic 3: La Película.",
+    "director": "Jeff Fowler.",
+    "anio": 2024,
+    "genero": "Acción",
+    "calificacion": 6.9,
+    "sinopsis": "Tercera parte de las aventuras de Sonic, el rápido erizo azul.",
+    "poster": "https://m.media-amazon.com/images/I/916jcd+BQaL._AC_UF894,1000_QL80_.jpg"
+  },
+   {
+    "id": 8,
+    "titulo": "La La Land: Una historia de amor",
+    "director": "Damien Chazelle.",
+    "anio": 2016,
+    "genero": "Romance",
+    "calificacion": 8,
+    "sinopsis": "Mientras luchan por sus carreras en Los Ángeles, un pianista y una actriz se enamoran mientras intentan reconciliar sus aspiraciones para el futuro.",
+    "poster": "https://i5.walmartimages.com/seo/Rolled-Poster-La-La-Land-Movie-24-x-36-Poster_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg"
+  },
+   {
+    "id": 9,
+    "titulo": "Wonka",
+    "director": "Paul King.",
+    "anio": 2024,
+    "genero": "Musical",
+    "calificacion": 6.9,
+    "sinopsis": "La historia se centrará específicamente en un joven Willy Wonka y en cómo conoció a los Oompa-Loompas en una de sus primeras aventuras.",
+    "poster": "https://i.ebayimg.com/images/g/Y50AAOSwd~5lQ7gI/s-l1200.jpg"
+  },
+   {
+    "id": 10,
+    "titulo": "Five Nights at Freddy's 2",
+    "director": "Emma Tammi.",
+    "anio": 2025,
+    "genero": "Terror",
+    "calificacion": 5.1,
+    "sinopsis": "1987, tras una vida inestable, Jeremy Fitzgerald encontró trabajo como guardia en la nueva pizzería Freddy's Fazbear, pero al entrar descubriría que no todo es lo que parece.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmQ3NmIxNTgtYjFiNS00NzliLWI0YzAtZDkxY2E0YWIxZDEwXkEyXkFqcGc@._V1_.jpg"
+  }
+]
