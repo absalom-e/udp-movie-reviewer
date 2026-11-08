@@ -1,3 +1,4 @@
+// [IA] inicio · ia/2026-11-07_tilin67-67_api-y-catalogo.md
 const LATENCIA = 500;
 const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -137,3 +138,4 @@ export function obtenerUsuario() {
 export function logout() {
   localStorage.removeItem('usuario_activo');
 }
+// [IA] fin
