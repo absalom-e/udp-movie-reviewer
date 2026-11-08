@@ -41,11 +41,3 @@
   }
 ]
 
-/*Se hizo uso de un breve manejo de IA como guia para rellenar los 
-campos, el prompt ha sido el siguiente : 'Dime o dame una idea general
- de contenidos de prueba con los cuales rellenar estos mocks,
-  no te pido que lo hagas tu, solo que me des un esqueleto generico
-   y base para poder rellenar yo*/
-
-/*Dado a que json no permite comentarios, este comentario sera borrado
-pronto a su elaboracion*/
