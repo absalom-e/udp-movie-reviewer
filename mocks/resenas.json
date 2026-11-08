@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "peliculaId": 1,
+    "autor": "Anton Ego",
+    "calificacion": 8.9,
+    "comentario": "La cuarta cinta protagonizada por el equipo de los superhéroes más grandes del universo Marvel es una montaña rusa de emociones y sorpresas que no deja a nadie indiferente.",
+    "fecha": "2019-04-26"
+  },
+  {
+    "id": 2,
+    "peliculaId": 2,
+    "autor": "Usuario Normal",
+    "calificacion": 2.5,
+    "comentario": "Carece totalmente de encanto, y tan divertida como un dolor de muelas, eliminar la parte de su llegada a la Tierra, su cortejo a Lois y su evolución como superhéroe no sólo priva al filme de una estructura útil, también de la necesaria humanidad.",
+    "fecha": "2025-8-01"
+  },
+  {
+    "id": 3,
+    "peliculaId": 3,
+    "autor": "Usuario Normal",
+    "calificacion": 10,
+    "comentario": "Se siente como ver un concierto del artista en vida una vez mas.",
+    "fecha": "2026-04-28"
+  },
+  {
+    "id": 4,
+    "peliculaId": 4,
+    "autor": "Anton Ego",
+    "calificacion": 9.5,
+    "comentario": "Steel Ball Run es el punto de partida perfecto para una de las historias más alocadas del anime (...) La nueva serie sienta unas bases sólidas para una aventura bizarra.",
+    "fecha": "2026-03-19"
+  },
+  {
+    "id": 5,
+    "peliculaId": 5,
+    "autor": "Usuario Normal",
+    "calificacion": 7,
+    "comentario": "Odiada injustamente en su tiempo de estreno/emisión, actualmente bien valorada. Así es como podríamos describir a Ben 10: Omniverse, la serie más polémica de la franquicia, para bien y para mal. Para mí, es una serie que superó a Supremacía Alienígena y está casi a la par con Fuerza Alienígena (casi).",
+    "fecha": "2020-03-25"
+  },
+  {
+    "id": 6,
+    "peliculaId": 6,
+    "autor": "Anton Ego",
+    "calificacion": 3.5,
+    "comentario": "es entretenida, pero esta pelicula no merece las calificaciones exageradamente bajas que le dio la critica. aun asi, esta pelicula puede estar en las peores peliculas animadas de la historia? NO, es mala, pero hay peores peliculas, como las de video briquedo, dingo pictures, etc.",
+    "fecha": "2017-12-12"
+  },
+  {
+    "id": 7,
+    "peliculaId": 7,
+    "autor": "Usuario Normal",
+    "calificacion": 6.9,
+    "comentario": "Sonic 3: La película' es la mejor de la saga gracias a un genial y desatado Jim Carrey.",
+    "fecha": "2024-12-26"
+  },
+  {
+    "id": 8,
+    "peliculaId": 8,
+    "autor": "Anton Ego",
+    "calificacion": 9,
+    "comentario": "Es un dulce drama lleno de energía. Muy pronto me encontré completamente absorbido por la simple vitalidad narrativa de esta película y las fantásticas interpretaciones principales de Ryan Gosling y Emma Stone, que están excelentes.",
+    "fecha": "2016-8-31"
+  },
+  {
+    "id": 9,
+    "peliculaId": 9,
+    "autor": "Anton Ego",
+    "calificacion": 8.1,
+    "comentario": "Una delicia magníficamente dulce. La he disfrutado más que las dos versiones anteriores, con Gene Wilder en 1971 y Johnny Depp en 2005. Aporta las endorfinas del chocolate.",
+    "fecha": "2023-12-20"
+  },
+  {
+    "id": 10,
+    "peliculaId": 10,
+    "autor": "Usuario Normal",
+    "calificacion": 1,
+    "comentario": "Five Nights at Freddy's 2 no es solo una mala película de terror. Es insolente y cínica en su mediocridad.",
+    "fecha": "2025-12-4"
+  }
+]
