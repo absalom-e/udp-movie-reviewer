@@ -8,11 +8,12 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | 2026-11-07 | @tilin67-67 | Gemini | Capa de servicios (js/api.js) | [ver](2026-11-07_tilin67-67_capa-api.md) |
 | 2026-11-07 | @tilin67-67 | Gemini | Catálogo con búsqueda, filtros y estados | [ver](2026-11-07_tilin67-67_catalogo.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del orden de carga de Alpine | [ver](2026-11-08_tilin67-67_alpine-orden-carga.md) |
+| 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del filtro por género | [ver](2026-11-08_tilin67-67_filtro-genero.md) |
 
 ## Archivos con código asistido por IA
 
 | Archivo | Registro |
 |---|---|
 | `index.html` (bloque del `<head>` con Tailwind y Alpine) | 2026-11-07_tilin67-67_tailwind-alpine.md |
-| `js/api.js` | 2026-11-07_tilin67-67_capa-api.md |
-| `htmls/catalogo.html` | 2026-11-07_tilin67-67_catalogo.md y 2026-11-08_tilin67-67_alpine-orden-carga.md |
+| `js/api.js` | 2026-11-07_tilin67-67_capa-api.md y 2026-11-08_tilin67-67_filtro-genero.md |
+| `htmls/catalogo.html` | 2026-11-07_tilin67-67_catalogo.md, 2026-11-08_tilin67-67_alpine-orden-carga.md y 2026-11-08_tilin67-67_filtro-genero.md |
