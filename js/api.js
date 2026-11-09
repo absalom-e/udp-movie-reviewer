@@ -1,3 +1,4 @@
+// [IA] inicio · ia/2026-11-07_tilin67-67_api-y-catalogo.md
 const LATENCIA = 500;
 const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -35,7 +36,9 @@ export async function obtenerPeliculas({ busqueda = '', genero = '', orden = '',
   }
 
   if (genero !== '') {
-    peliculas = peliculas.filter((p) => p.genero.toLowerCase() === genero.toLowerCase());
+   // [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md
+    peliculas = peliculas.filter((p) => normalizarGenero(p.genero) === normalizarGenero(genero));
+    // [IA] fin
   }
 
   if (orden === 'rating_desc') {
@@ -137,3 +140,30 @@ export function obtenerUsuario() {
 export function logout() {
   localStorage.removeItem('usuario_activo');
 }
+// [IA] fin
+// [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md
+// Deja el género en minúsculas, sin tildes, sin espacios sobrantes y sin punto final.
+function normalizarGenero(texto) {
+  return String(texto || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[.\s]+$/, '');
+}
+
+// Devuelve los géneros que existen en los datos, sin repetir y ordenados.
+export async function obtenerGeneros() {
+  await esperar(LATENCIA);
+  await cargarDatosIniciales();
+  const peliculas = JSON.parse(localStorage.getItem('peliculas') || '[]');
+  const vistos = new Map();
+  peliculas.forEach((p) => {
+    const clave = normalizarGenero(p.genero);
+    if (clave && !vistos.has(clave)) {
+      vistos.set(clave, String(p.genero).trim().replace(/[.\s]+$/, ''));
+    }
+  });
+  const data = [...vistos.values()].sort((x, y) => x.localeCompare(y, 'es'));
+  return { ok: true, status: 200, data };
+}
+// [IA] fin
