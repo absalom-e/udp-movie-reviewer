@@ -29,14 +29,57 @@
 
  <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
 
-    <header style="text-align: right; margin-right: 30px">
-      <a href="htmls/Se.html">
-      <button class = "login">Iniciar Sesión</button> 
-      </a>
-      <a href="htmls/Cre.html">
-      <button class = "register">Registrarse</button>
-      </a>
-    </header> 
+    <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<header
+  id="menu-principal"
+  class="relative flex flex-wrap items-center justify-between px-8 py-3 border-b border-sky-200"
+  x-data="{
+    abierto: false,
+    actual: decodeURIComponent(location.pathname),
+    enlaces: [
+      { nombre: 'Inicio',           ruta: '/index.html' },
+      { nombre: 'Crear cuenta',     ruta: '/htmls/Cre.html' },
+      { nombre: 'Iniciar sesión',   ruta: '/htmls/Se.html' },
+      { nombre: 'Ver catálogo',     ruta: '/htmls/catalogo.html' },
+      { nombre: 'Hacer una reseña', ruta: '/htmls/Reseña.html' }
+    ],
+    esActual(ruta) {
+      return this.actual === ruta || (ruta === '/index.html' && this.actual === '/');
+    }
+  }"
+>
+  <a href="/index.html" class="text-lg font-bold text-sky-600 no-underline">udp-movie-reviewer</a>
+
+  <button
+    type="button"
+    class="md:hidden px-3 py-1 border border-sky-500 rounded text-sky-600"
+    aria-label="Abrir menú"
+    aria-controls="menu-lista"
+    :aria-expanded="abierto"
+    @click="abierto = !abierto"
+  >☰</button>
+
+  <nav aria-label="Navegación principal" class="w-full md:w-auto">
+    <ul
+      id="menu-lista"
+      class="list-none m-0 p-0 mt-3 md:mt-0 md:flex flex-col md:flex-row gap-2"
+      :class="abierto ? 'flex' : 'hidden'"
+    >
+      <template x-for="e in enlaces" :key="e.ruta">
+        <li>
+          <a
+            :href="e.ruta"
+            x-text="e.nombre"
+            class="block px-3 py-1 rounded no-underline"
+            :class="esActual(e.ruta) ? 'bg-sky-500 text-white' : 'text-sky-600 hover:bg-sky-100'"
+            :aria-current="esActual(e.ruta) ? 'page' : null"
+          ></a>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</header>
+<!-- [IA] fin -->
     
      <main style="text-align: center">
 
@@ -81,7 +124,7 @@
         </a>  
 
         <a href="htmls/prueba_menu_tutorial.html">  
-        <button class = "prueba">Ir a prueba/button> 
+        <button class = "prueba">Ir a prueba</button>
         </a>   
 
       </section>

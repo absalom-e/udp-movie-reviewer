@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catalogo de peliculas</title>
   <link rel="stylesheet" href="/styles/catalogo_style.css">
+  
+  
 
    <!-- [IA] inicio · ia/2026-11-07_tilin67-67_tailwind-alpine.md -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,16 +26,14 @@
 <body style="padding-top: 20px;" x-data="catalogoApp()" x-init="cargar()">
 
 <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
-  <header style="margin-left: 30px; margin-right: 30px; display: flex; justify-content: space-between; align-items: center;">
-    <nav aria-label="Navegación principal">
-      <a href="../index.html">  
-        <button class="index">volver al inicio</button> 
-      </a> 
-    </nav>
-    <a href="Reseña.html">  
-      <button class="Reseña">Hacer una reseña</button> 
-    </a>
-  </header>
+  <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<header
+  x-data
+  x-init="fetch('/index.html')
+    .then(r => r.text())
+    .then(t => $el.replaceWith(new DOMParser().parseFromString(t, 'text/html').getElementById('menu-principal')))"
+></header>
+<!-- [IA] fin -->
 
   <main style="text-align: center; max-width: 1100px; margin: 0 auto; padding: 20px;">
 
