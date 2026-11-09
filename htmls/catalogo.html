@@ -16,7 +16,7 @@
       }
     }
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
   <!-- [IA] fin -->
 </head>
 
@@ -62,12 +62,11 @@
           style="padding: 7px 10px; border: 1px solid rgb(0,160,255); border-radius: 3px; background: white; font-size: 14px; height: 35px; box-sizing: border-box;"
         >
           <option value="">Todos los géneros</option>
-          <option value="Ciencia Ficción">Ciencia Ficción</option>
-          <option value="Drama">Drama</option>
-          <option value="Crimen">Crimen</option>
-          <option value="Animación">Animación</option>
-          <option value="Acción">Acción</option>
-          <option value="Suspenso">Suspenso</option>
+          <!-- [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md -->
+          <template x-for="g in generos" :key="g">
+            <option :value="g" x-text="g"></option>
+          </template>
+          <!-- [IA] fin -->
         </select>
 
         <select 
@@ -122,8 +121,9 @@
   </main>
 
   <script type="module">
-    import { obtenerPeliculas } from '/js/api.js';
-
+    // [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md
+    import { obtenerPeliculas, obtenerGeneros } from '/js/api.js';
+    // [IA] fin
     window.catalogoApp = function() {
       return {
         peliculas: [],
@@ -132,7 +132,18 @@
         busqueda: '',
         genero: '',
         orden: 'rating_desc',
+        // [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md
+        generos: [],
 
+        init() {
+          this.cargarGeneros();
+        },
+
+        async cargarGeneros() {
+          const res = await obtenerGeneros();
+          if (res.ok) this.generos = res.data;
+        },
+        // [IA] fin
         async cargar() {
           this.cargando = true;
           this.error = null;
@@ -155,6 +166,9 @@
       };
     };
   </script>
+  <!-- [IA] inicio · ia/2026-11-08_tilin67-67_alpine-orden-carga.md -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- [IA] fin -->
 </body>
 <!-- [IA] fin -->
 </html>
