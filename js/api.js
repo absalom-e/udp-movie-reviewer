@@ -1,4 +1,4 @@
-// [IA] inicio · ia/2026-11-07_tilin67-67_api-y-catalogo.md
+// [IA] inicio · ia/2026-11-07_tilin67-67_capa-api.md
 const LATENCIA = 500;
 const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
