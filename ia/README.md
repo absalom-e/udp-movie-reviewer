@@ -12,8 +12,11 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del orden de carga de Alpine | [ver](2026-11-08_tilin67-67_alpine-orden-carga.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del filtro por género | [ver](2026-11-08_tilin67-67_filtro-genero.md) |
 | 2026-11-09 | @tilin67-67 | Claude | Menú de navegación compartido | [ver](2026-11-09_tilin67-67_menu-estatico.md) |
+| 2026-11-09 | @tilin67-67 | Claude(Sonnet 5.5) | Menú de navegación compartido | [ver](2026-11-09_tilin67-67_menu-estatico.md) |
+| 2026-11-09 | @absalom-e | Antigravity (Gemini) | Flujo de login y registro con Alpine | [ver](2026-11-09_absalom-e_login-registro-alpine.md) |
 | 2026-11-10 | @tilin67-67 | Claude | Reseñas con CRUD, modal, pestañas, acordeón, toasts y carga incremental | [ver](2026-11-10_tilin67-67_resenas-crud.md) |
 | 2026-11-10 | @tilin67-67 | Claude | Menú desplegable "Cuenta" | [ver](2026-11-10_tilin67-67_menu-desplegable.md) |
+
 
 ## Archivos con código asistido por IA
 
@@ -30,3 +33,5 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | `mocks/peliculas.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
 | `mocks/usuarios.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
 | `mocks/resenas.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
+| `htmls/Se.html` | [2026-11-09_absalom-e_login-registro-alpine.md](2026-11-09_absalom-e_login-registro-alpine.md) |
+| `htmls/Cre.html` | [2026-11-09_absalom-e_login-registro-alpine.md](2026-11-09_absalom-e_login-registro-alpine.md) |
