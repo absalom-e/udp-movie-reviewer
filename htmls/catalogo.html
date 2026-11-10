@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catalogo de peliculas</title>
   <link rel="stylesheet" href="/styles/catalogo_style.css">
-  
-  
 
    <!-- [IA] inicio · ia/2026-11-07_tilin67-67_tailwind-alpine.md -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +16,6 @@
       }
     }
   </script>
-
   <!-- [IA] fin -->
 </head>
 
@@ -52,7 +49,6 @@
           style="padding: 7px 12px; border: 1px solid rgb(0,160,255); border-radius: 3px; width: 240px; font-size: 14px; height: 35px; box-sizing: border-box;"
         >
 
-       
         <button class="index" @click="cargar()">
           Buscar
         </button>
@@ -85,9 +81,12 @@
 
 <!-- [IA] fin -->
 
-    <div x-show="cargando" style="padding: 30px;">
-      <p>Cargando películas...</p>
-    </div>
+        <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+    <div x-show="cargando" role="status" class="flex flex-col items-center gap-3 p-8">
+      <div class="animate-spin rounded-full border-4 border-solid border-sky-200 border-t-sky-600" style="width: 36px; height: 36px;"></div>
+      <p style="margin: 0;">Cargando películas...</p>
+      </div>
+    <!-- [IA] fin -->
 
     <div x-show="!cargando && error" style="margin: 20px auto; padding: 15px; max-width: 400px; border: 1px solid #e57373; border-radius: 4px; background-color: #ffebee;">
       <p style="color: #c62828; margin-bottom: 12px;" x-text="error"></p>
@@ -98,12 +97,23 @@
 
     <div x-show="!cargando && !error && peliculas.length === 0" style="padding: 30px; border: 1px dashed #ccc; border-radius: 4px;">
       <p>No se encontraron películas con los filtros seleccionados.</p>
+         <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+      <button class="index" @click="limpiar()">Limpiar filtros</button>
+      <!-- [IA] fin -->
     </div>
 
+    <!-- [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md -->
     <div x-show="!cargando && !error && peliculas.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" style="margin-top: 25px; text-align: left;">
-      <template x-for="p in peliculas" :key="p.id">
+      <template x-for="p in peliculasVisibles" :key="p.id">
         <div style="border: 1px solid #ccc; border-radius: 4px; padding: 12px; background: white; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
+          <div
+            class="cursor-pointer"
+            role="button"
+            tabindex="0"
+            :aria-label="'Ver detalles de ' + p.titulo"
+            @click="abrirModal(p)"
+            @keydown.enter="abrirModal(p)"
+          >
             <img :src="p.poster" :alt="p.titulo" style="width: 100%; height: 200px; object-fit: cover; border-radius: 3px; margin-bottom: 10px;">
             <h3 style="margin: 0 0 5px 0; font-size: 16px;" x-text="p.titulo"></h3>
             <p style="margin: 0 0 5px 0; font-size: 13px; color: #555;">
@@ -114,19 +124,163 @@
             </p>
             <p style="margin: 0 0 12px 0; font-size: 12px; color: #666;" x-text="p.sinopsis"></p>
           </div>
-          <a href="Reseña.html" style="text-align: center;">
+          <a :href="'Reseña.html?peliculaId=' + p.id" style="text-align: center;">
             <button class="Reseña" style="width: 100%;">Escribir reseña</button>
           </a>
         </div>
       </template>
     </div>
 
+    <div x-show="!cargando && !error && visibles < peliculas.length" style="margin-top: 25px;">
+      <button class="index" @click="verMas()">Ver más películas</button>
+      <p style="font-size: 13px; color: #666;">
+        Mostrando <span x-text="peliculasVisibles.length"></span> de <span x-text="peliculas.length"></span>
+      </p>
+    </div>
+    <!-- [IA] fin -->
+
   </main>
 
+  <!-- [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md -->
+  <template x-if="modalAbierto && peliculaSel">
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style="background: rgba(0,0,0,0.55);"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-titulo"
+      @click.self="cerrarModal()"
+      @keydown.escape.window="cerrarModal()"
+    >
+      <div class="bg-white rounded w-full max-w-xl overflow-y-auto p-5 text-left" style="max-height: 85vh;">
+
+        <div class="flex justify-between items-start gap-3 mb-3">
+          <h2 id="modal-titulo" class="m-0 text-xl" x-text="peliculaSel.titulo"></h2>
+          <button type="button" class="px-2 cursor-pointer" aria-label="Cerrar" @click="cerrarModal()">✕</button>
+        </div>
+
+        <!-- Pestañas -->
+        <div role="tablist" class="flex gap-2 mb-3">
+          <button
+            type="button" role="tab"
+            :aria-selected="pestana === 'sinopsis'"
+            @click="pestana = 'sinopsis'"
+            class="px-3 py-1 rounded border border-sky-300 cursor-pointer"
+            :class="pestana === 'sinopsis' ? 'bg-sky-500 text-white' : 'bg-sky-50 text-sky-600'"
+          >Sinopsis</button>
+          <button
+            type="button" role="tab"
+            :aria-selected="pestana === 'resenas'"
+            @click="pestana = 'resenas'"
+            class="px-3 py-1 rounded border border-sky-300 cursor-pointer"
+            :class="pestana === 'resenas' ? 'bg-sky-500 text-white' : 'bg-sky-50 text-sky-600'"
+          >Reseñas (<span x-text="resenas.length"></span>)</button>
+        </div>
+
+        <!-- Pestaña 1: sinopsis -->
+        <div x-show="pestana === 'sinopsis'" role="tabpanel">
+          <img :src="peliculaSel.poster" :alt="peliculaSel.titulo" class="w-full rounded mb-3" style="height: 220px; object-fit: cover;">
+          <p class="m-0 mb-1 text-sm text-gray-600">
+            <span x-text="peliculaSel.director"></span> (<span x-text="peliculaSel.anio"></span>) ·
+            <span x-text="peliculaSel.genero"></span>
+          </p>
+          <p class="m-0 mb-2 text-sm font-bold" style="color: rgb(0,140,255);">
+            Calificación: <span x-text="peliculaSel.calificacion"></span> / 10
+          </p>
+          <p class="m-0 text-sm" x-text="peliculaSel.sinopsis"></p>
+        </div>
+
+        <!-- Pestaña 2: reseñas (acordeón) -->
+        <div x-show="pestana === 'resenas'" role="tabpanel">
+           <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+  <div x-show="cargandoResenas" role="status" class="flex items-center gap-2 py-3">
+    <div class="animate-spin rounded-full border-2 border-solid border-sky-200 border-t-sky-600" style="width: 20px; height: 20px;"></div>
+    <p class="m-0 text-sm">Cargando reseñas...</p>
+  </div>
+  <div x-show="!cargandoResenas && errorResenas" class="py-3">
+    <p class="text-red-700 mt-0" x-text="errorResenas"></p>
+    <button type="button" class="index" @click="cargarResenas()">Reintentar</button>
+  </div>
+  <!-- [IA] fin -->
+          <p x-show="!cargandoResenas && !errorResenas && resenas.length === 0" class="text-sm text-gray-600">
+            Esta película aún no tiene reseñas. ¡Escribe la primera!
+          </p>
+
+          <div x-show="!cargandoResenas && !errorResenas">
+            <template x-for="r in resenas" :key="r.id">
+              <div class="border border-sky-200 rounded mb-2">
+                <h3 class="m-0 text-base">
+                  <button
+                    type="button"
+                    class="w-full flex justify-between items-center px-3 py-2 text-left bg-transparent border-0 cursor-pointer"
+                    :aria-expanded="abiertaId === r.id"
+                    @click="abiertaId = (abiertaId === r.id ? null : r.id)"
+                  >
+                    <span>
+                      <strong x-text="r.autor"></strong> ·
+                      <span x-text="r.calificacion + ' / 10'"></span>
+                    </span>
+                    <span aria-hidden="true" x-text="abiertaId === r.id ? '−' : '+'"></span>
+                  </button>
+                </h3>
+
+                <div x-show="abiertaId === r.id" class="px-3 pb-3 text-sm">
+
+                  <!-- Leer -->
+                  <div x-show="editandoId !== r.id">
+                    <p class="m-0 mb-1 text-xs text-gray-500" x-text="r.fecha"></p>
+                    <p class="m-0 mb-2" x-text="r.comentario"></p>
+                    <template x-if="r.autor === autorActual">
+                      <div class="flex gap-2">
+                        <button type="button" class="index" @click="empezarEdicion(r)">Editar</button>
+                        <button type="button" class="index" @click="borrar(r)">Eliminar</button>
+                      </div>
+                    </template>
+                  </div>
+
+                  <!-- Editar -->
+                  <form x-show="editandoId === r.id" @submit.prevent="guardarEdicion(r)" class="flex flex-col gap-2">
+                    <label class="text-xs" :for="'cal-' + r.id">Calificación (0 a 10)</label>
+                    <input :id="'cal-' + r.id" type="number" min="0" max="10" step="0.1" required
+                           x-model.number="editCalificacion" class="border border-sky-400 rounded px-2 py-1">
+                    <label class="text-xs" :for="'com-' + r.id">Comentario</label>
+                    <textarea :id="'com-' + r.id" rows="3" required
+                              x-model="editComentario" class="border border-sky-400 rounded px-2 py-1"></textarea>
+                    <div class="flex gap-2">
+                      <button type="submit" class="index">Guardar</button>
+                      <button type="button" class="index" @click="editandoId = null">Cancelar</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="flex gap-2 justify-end mt-4">
+          <a :href="'Reseña.html?peliculaId=' + peliculaSel.id">
+            <button type="button" class="Reseña">Escribir reseña</button>
+          </a>
+          <button type="button" class="index" @click="cerrarModal()">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </template>
+  <!-- [IA] fin -->
+
   <script type="module">
-    // [IA] inicio · ia/2026-11-08_tilin67-67_filtro-genero.md
-    import { obtenerPeliculas, obtenerGeneros } from '/js/api.js';
+    // [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md
+    import {
+      obtenerPeliculas, obtenerGeneros,
+      obtenerResenas, actualizarResena, eliminarResena, obtenerUsuario
+    } from '/js/api.js';
+    import { mostrarToast } from '/js/toast.js';
+
+    const POR_PAGINA = 6;
     // [IA] fin
+
     window.catalogoApp = function() {
       return {
         peliculas: [],
@@ -147,9 +301,109 @@
           if (res.ok) this.generos = res.data;
         },
         // [IA] fin
+
+        // [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md
+        // Carga incremental
+        visibles: POR_PAGINA,
+        get peliculasVisibles() {
+          return this.peliculas.slice(0, this.visibles);
+        },
+        verMas() {
+          this.visibles += POR_PAGINA;
+        },
+
+        // Modal, pestañas y acordeón
+        modalAbierto: false,
+        peliculaSel: null,
+        pestana: 'sinopsis',
+        resenas: [],
+        cargandoResenas: false,
+        errorResenas: null,
+        abiertaId: null,
+        editandoId: null,
+        editCalificacion: '',
+        editComentario: '',
+        autorActual: 'Usuario',
+
+        async abrirModal(p) {
+          this.peliculaSel = p;
+          this.pestana = 'sinopsis';
+          this.abiertaId = null;
+          this.editandoId = null;
+          this.resenas = [];
+          this.autorActual = obtenerUsuario()?.nombre || 'Usuario';
+          this.modalAbierto = true;
+          await this.cargarResenas();
+        },
+
+        cerrarModal() {
+          this.modalAbierto = false;
+        },
+
+        async cargarResenas() {
+          const id = this.peliculaSel.id;
+          this.cargandoResenas = true;
+          this.errorResenas = null;
+
+          const res = await obtenerResenas(id);
+          if (!this.peliculaSel || this.peliculaSel.id !== id) return;
+
+          if (res.ok) {
+            this.resenas = res.data;
+          } else {
+            this.errorResenas = res.error;
+            this.resenas = [];
+          }
+          this.cargandoResenas = false;
+        },
+
+        empezarEdicion(r) {
+          this.editandoId = r.id;
+          this.editCalificacion = r.calificacion;
+          this.editComentario = r.comentario;
+        },
+
+        async guardarEdicion(r) {
+          if (this.editComentario.trim() === '') {
+            mostrarToast('El comentario no puede estar vacío.', 'error');
+            return;
+          }
+          const res = await actualizarResena(r.id, {
+            calificacion: this.editCalificacion,
+            comentario: this.editComentario.trim()
+          });
+          if (res.ok) {
+            this.editandoId = null;
+            await this.cargarResenas();
+            mostrarToast('Reseña actualizada.');
+          } else {
+            mostrarToast(res.error, 'error');
+          }
+        },
+
+        async borrar(r) {
+          if (!confirm('¿Eliminar esta reseña?')) return;
+          const res = await eliminarResena(r.id);
+          if (res.ok) {
+            await this.cargarResenas();
+            mostrarToast('Reseña eliminada.');
+          } else {
+            mostrarToast(res.error, 'error');
+          }
+        },
+        // [IA] fin
+        // [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md
+        limpiar() {
+          this.busqueda = '';
+          this.genero = '';
+          this.orden = 'rating_desc';
+          this.cargar();
+        },
+        // [IA] fin
         async cargar() {
           this.cargando = true;
           this.error = null;
+          this.visibles = POR_PAGINA;
 
           const res = await obtenerPeliculas({
             busqueda: this.busqueda,

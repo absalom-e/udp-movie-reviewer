@@ -11,7 +11,7 @@
 <script>
   tailwind.config = { corePlugins: { preflight: false } }
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 <!-- [IA] fin -->
 </head>
 
@@ -65,7 +65,10 @@
     </section>
    </main>
 
+<!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
 <script type="module">
+  import { registrarUsuario } from '/js/api.js';
+
   window.registroForm = function() {
     return {
       nombre: '',
@@ -76,33 +79,20 @@
       cargando: false,
       async crearCuenta() {
         this.cargando = true;
-        this.error = null; 
-        let usuarios = JSON.parse(localStorage.getItem('usuarios') || 'null');
-        if (!usuarios) {
-        try {
-         const res = await fetch('/mocks/usuarios.json');
-         usuarios = await res.json();
-        } catch (e) {
-         usuarios = [];
-        }
-}
-        const existe = usuarios.some(u => u.correo.toLowerCase() === this.correo.toLowerCase());
-        if (existe) {
-          this.error = 'Este correo ya tiene una cuenta registrada.';
+        this.error = null;
+
+        const res = await registrarUsuario({
+          nombre: this.nombre,
+          correo: this.correo,
+          clave: this.clave
+        });
+
+        if (!res.ok) {
+          this.error = res.error;
           this.cargando = false;
           return;
         }
-        
-        const nuevoUsuario = {
-          id: Date.now(),
-          nombre: this.nombre,
-          correo: this.correo,
-          clave: this.clave,
-          rol: 'usuario',
-          reputacion: 10
-        };
-        usuarios.push(nuevoUsuario);
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
         this.exito = true;
         setTimeout(() => {
           window.location.href = 'exito.html';
@@ -111,6 +101,7 @@
     };
   };
 </script>
+<!-- [IA] fin -->
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
