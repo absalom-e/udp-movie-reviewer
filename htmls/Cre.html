@@ -44,7 +44,7 @@
 
       <p x-show="error" x-text="error" style="color: red; margin : 10px; font-size : 14px">Hubo un error durante la creacion de la cuenta, por favor vuelva a intentar mas tarde.</p>
       <p x-show="exito" style="color: green; margin : 10px; font-size : 14px">¡Cuenta creada con éxito! Redirigiendo...</p>
-      <button type="submit" :disabled = "cargando">Crear cuenta</button>
+      <button type="submit" :disabled="cargando">Crear cuenta</button>
 
 <!-- [IA] fin -->
 
@@ -69,7 +69,15 @@
       async crearCuenta() {
         this.cargando = true;
         this.error = null; 
-        let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+        let usuarios = JSON.parse(localStorage.getItem('usuarios') || 'null');
+        if (!usuarios) {
+        try {
+         const res = await fetch('/mocks/usuarios.json');
+         usuarios = await res.json();
+        } catch (e) {
+         usuarios = [];
+        }
+}
         const existe = usuarios.some(u => u.correo.toLowerCase() === this.correo.toLowerCase());
         if (existe) {
           this.error = 'Este correo ya tiene una cuenta registrada.';
