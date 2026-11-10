@@ -7,14 +7,13 @@
     <title>Crear Reseña</title>
     <link rel="stylesheet" href="/styles/reseña_style.css">
     <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { corePlugins: { preflight: false } }
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<!-- [IA] fin -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { corePlugins: { preflight: false } }
+    </script>
+    <!-- [IA] fin -->
   </head>
-  <body style = "padding-top: 20px">
+  <body style="padding-top: 20px" x-data="resenaApp()">
 
   <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
 
@@ -27,41 +26,114 @@
 ></header>
 <!-- [IA] fin -->
 
-
     <main style="text-align: center">
     <section class="form-resena">
     <h1>Crear reseña</h1>
 
-    <form id="form-resena">  
-  
-   <div class="nombre-pelicula">
-     <label for="pelicula">Nombre de la película:</label>
-     <input type="text" id="pelicula" name="pelicula" required>
-   </div>
-  
-  <div class="reseña">
-    <label for="resena">Tu reseña:</label>
-    <textarea 
-      id="resena" 
-      name="resena" 
-      rows="2" 
-      cols="10" 
-      required placeholder="Escribe aquí tu opinión sobre la película..."></textarea>
-  </div>
-  
-  <button type="submit" class="btn-enviar">Enviar reseña</button>
+    <!-- [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md -->
+    <form id="form-resena" @submit.prevent="enviar()">
 
-</form>
-</section>
+      <div class="nombre-pelicula">
+        <label for="pelicula">Película:</label>
+        <select id="pelicula" name="pelicula" x-model.number="peliculaId" required>
+          <option value="">Selecciona una película</option>
+          <template x-for="p in peliculas" :key="p.id">
+            <option :value="p.id" x-text="p.titulo"></option>
+          </template>
+        </select>
+      </div>
 
-<section style="margin-top: 20px">
-  <a href="catalogo.html">  
-  <button class = "Catalogo">Ver catalogo</button> 
-  </a> 
-</section>
+      <div class="calificacion">
+        <label for="calificacion">Calificación (0 a 10):</label>
+        <input type="number" id="calificacion" name="calificacion"
+               min="0" max="10" step="0.1" x-model.number="calificacion" required>
+      </div>
 
-<!-- [IA] fin -->
-   
+      <div class="reseña">
+        <label for="resena">Tu reseña:</label>
+        <textarea
+          id="resena"
+          name="resena"
+          rows="2"
+          cols="10"
+          x-model="comentario"
+          required placeholder="Escribe aquí tu opinión sobre la película..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-enviar" :disabled="enviando">
+        <span x-text="enviando ? 'Enviando...' : 'Enviar reseña'"></span>
+      </button>
+
+    </form>
+    <!-- [IA] fin -->
+    </section>
+
+    <section style="margin-top: 20px">
+      <a href="catalogo.html">  
+      <button class="Catalogo">Ver catalogo</button> 
+      </a> 
+    </section>
+
+    <!-- [IA] fin -->
+
     </main>
+
+    <!-- [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md -->
+    <script type="module">
+      import { obtenerPeliculas, crearResena, obtenerUsuario } from '/js/api.js';
+      import { mostrarToast } from '/js/toast.js';
+
+      window.resenaApp = function () {
+        return {
+          peliculas: [],
+          peliculaId: '',
+          calificacion: '',
+          comentario: '',
+          enviando: false,
+
+          async init() {
+            const res = await obtenerPeliculas({ orden: 'az' });
+            if (!res.ok) {
+              mostrarToast(res.error, 'error');
+              return;
+            }
+            this.peliculas = res.data;
+
+            const idUrl = Number(new URLSearchParams(location.search).get('peliculaId'));
+            if (idUrl) {
+              await this.$nextTick();
+              this.peliculaId = idUrl;
+            }
+          },
+
+          async enviar() {
+            if (this.comentario.trim() === '') {
+              mostrarToast('Escribe tu reseña antes de enviar.', 'error');
+              return;
+            }
+            this.enviando = true;
+            const usuario = obtenerUsuario();
+
+            const res = await crearResena({
+              peliculaId: this.peliculaId,
+              autor: usuario ? usuario.nombre : 'Usuario',
+              calificacion: this.calificacion,
+              comentario: this.comentario.trim()
+            });
+
+            this.enviando = false;
+            if (res.ok) {
+              this.comentario = '';
+              this.calificacion = '';
+              mostrarToast('¡Reseña publicada!');
+            } else {
+              mostrarToast(res.error || 'No se pudo enviar la reseña.', 'error');
+            }
+          }
+        };
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- [IA] fin -->
   </body>
 </html>
