@@ -11,21 +11,19 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | 2026-11-07 | @tilin67-67 | Gemini | Catálogo con búsqueda, filtros y estados | [ver](2026-11-07_tilin67-67_catalogo.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del orden de carga de Alpine | [ver](2026-11-08_tilin67-67_alpine-orden-carga.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del filtro por género | [ver](2026-11-08_tilin67-67_filtro-genero.md) |
+| 2026-11-09 | @tilin67-67 | Claude(Sonnet 5.5) | Menú de navegación compartido | [ver](2026-11-09_tilin67-67_menu-estatico.md) |
 
 ## Archivos con código asistido por IA
 
 | Archivo | Registro |
 |---|---|
-
-| `index.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
-| `htmls/catalogo.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
-| `htmls/Cre.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
-| `htmls/Se.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
-| `htmls/Reseña.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
+| `index.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md), [2026-11-07_tilin67-67_tailwind-alpine.md](2026-11-07_tilin67-67_tailwind-alpine.md) (bloque del `<head>` con Tailwind y Alpine) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) (menú) |
+| `htmls/catalogo.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md), [2026-11-07_tilin67-67_tailwind-alpine.md](2026-11-07_tilin67-67_tailwind-alpine.md), [2026-11-07_tilin67-67_catalogo.md](2026-11-07_tilin67-67_catalogo.md), [2026-11-08_tilin67-67_alpine-orden-carga.md](2026-11-08_tilin67-67_alpine-orden-carga.md), [2026-11-08_tilin67-67_filtro-genero.md](2026-11-08_tilin67-67_filtro-genero.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
+| `htmls/Cre.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
+| `htmls/Se.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
+| `htmls/Reseña.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
 | `htmls/exito.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) |
+| `js/api.js` | [2026-11-07_tilin67-67_capa-api.md](2026-11-07_tilin67-67_capa-api.md) y [2026-11-08_tilin67-67_filtro-genero.md](2026-11-08_tilin67-67_filtro-genero.md) |
 | `mocks/peliculas.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
 | `mocks/usuarios.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
 | `mocks/resenas.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
-| `index.html` (bloque del `<head>` con Tailwind y Alpine) | 2026-11-07_tilin67-67_tailwind-alpine.md |
-| `js/api.js` | 2026-11-07_tilin67-67_capa-api.md y 2026-11-08_tilin67-67_filtro-genero.md |
-| `htmls/catalogo.html` | 2026-11-07_tilin67-67_catalogo.md, 2026-11-08_tilin67-67_alpine-orden-carga.md y 2026-11-08_tilin67-67_filtro-genero.md |

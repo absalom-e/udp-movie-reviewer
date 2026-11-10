@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catalogo de peliculas</title>
   <link rel="stylesheet" href="/styles/catalogo_style.css">
+  
+  
 
-  <!-- [IA] inicio · ia/2026-11-07_tilin67-67_api-y-catalogo.md -->
+   <!-- [IA] inicio · ia/2026-11-07_tilin67-67_tailwind-alpine.md -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,20 +22,18 @@
   <!-- [IA] fin -->
 </head>
 
-<!-- [IA] inicio · ia/2026-11-07_tilin67-67_api-y-catalogo.md -->
+<!-- [IA] inicio · ia/2026-11-07_tilin67-67_catalogo.md -->
 <body style="padding-top: 20px;" x-data="catalogoApp()" x-init="cargar()">
 
 <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
-  <header style="margin-left: 30px; margin-right: 30px; display: flex; justify-content: space-between; align-items: center;">
-    <nav aria-label="Navegación principal">
-      <a href="../index.html">  
-        <button class="index">volver al inicio</button> 
-      </a> 
-    </nav>
-    <a href="Reseña.html">  
-      <button class="Reseña">Hacer una reseña</button> 
-    </a>
-  </header>
+  <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<header
+  x-data
+  x-init="fetch('/index.html')
+    .then(r => r.text())
+    .then(t => $el.replaceWith(new DOMParser().parseFromString(t, 'text/html').getElementById('menu-principal')))"
+></header>
+<!-- [IA] fin -->
 
   <main style="text-align: center; max-width: 1100px; margin: 0 auto; padding: 20px;">
 
@@ -110,7 +110,7 @@
               <span x-text="p.director"></span> (<span x-text="p.anio"></span>)
             </p>
             <p style="margin: 0 0 5px 0; font-size: 13px; font-weight: bold; color: rgb(0,140,255);">
-              Calificación: <span x-text="p.calificacion"></span> / 5
+              Calificación: <span x-text="p.calificacion"></span> / 10
             </p>
             <p style="margin: 0 0 12px 0; font-size: 12px; color: #666;" x-text="p.sinopsis"></p>
           </div>

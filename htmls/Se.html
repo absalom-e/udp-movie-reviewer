@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesion</title>
     <link rel="stylesheet" href="/styles/login_style.css">
+    <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { corePlugins: { preflight: false } }
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<!-- [IA] fin -->
 </head>
  
 <body style = "padding-top: 20px">
@@ -14,13 +21,14 @@
 
 <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
 
-  <header style="margin-left: 30px">
-    <nav aria-label="Navegación principal">
-       <a href="../index.html">  
-        <button class = "index">volver al inicio</button> 
-       </a> 
-    </nav>
-  </header>
+<!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<header
+  x-data
+  x-init="fetch('/index.html')
+    .then(r => r.text())
+    .then(t => $el.replaceWith(new DOMParser().parseFromString(t, 'text/html').getElementById('menu-principal')))"
+></header>
+<!-- [IA] fin -->
 
   <main style="text-align: center">
     <section class="form" x-data="loginForm()">
