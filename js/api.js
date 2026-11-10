@@ -97,6 +97,28 @@ export async function crearResena(datos) {
   return { ok: true, status: 201, data: nueva };
 }
 
+// [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md
+export async function actualizarResena(id, cambios) {
+  await esperar(LATENCIA);
+  await cargarDatosIniciales();
+  const resenas = JSON.parse(localStorage.getItem('resenas') || '[]');
+  const indice = resenas.findIndex((r) => r.id === Number(id));
+
+  if (indice === -1) {
+    return { ok: false, status: 404, error: 'Reseña no encontrada' };
+  }
+
+  resenas[indice] = {
+    ...resenas[indice],
+    calificacion: Number(cambios.calificacion),
+    comentario: cambios.comentario
+  };
+  localStorage.setItem('resenas', JSON.stringify(resenas));
+
+  return { ok: true, status: 200, data: resenas[indice] };
+}
+// [IA] fin
+
 export async function eliminarResena(id) {
   await esperar(LATENCIA);
   await cargarDatosIniciales();
