@@ -81,9 +81,12 @@
 
 <!-- [IA] fin -->
 
-    <div x-show="cargando" style="padding: 30px;">
-      <p>Cargando películas...</p>
-    </div>
+        <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+    <div x-show="cargando" role="status" class="flex flex-col items-center gap-3 p-8">
+      <div class="animate-spin rounded-full border-4 border-solid border-sky-200 border-t-sky-600" style="width: 36px; height: 36px;"></div>
+      <p style="margin: 0;">Cargando películas...</p>
+      </div>
+    <!-- [IA] fin -->
 
     <div x-show="!cargando && error" style="margin: 20px auto; padding: 15px; max-width: 400px; border: 1px solid #e57373; border-radius: 4px; background-color: #ffebee;">
       <p style="color: #c62828; margin-bottom: 12px;" x-text="error"></p>
@@ -94,6 +97,9 @@
 
     <div x-show="!cargando && !error && peliculas.length === 0" style="padding: 30px; border: 1px dashed #ccc; border-radius: 4px;">
       <p>No se encontraron películas con los filtros seleccionados.</p>
+         <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+      <button class="index" @click="limpiar()">Limpiar filtros</button>
+      <!-- [IA] fin -->
     </div>
 
     <!-- [IA] inicio · ia/2026-11-10_tilin67-67_resenas-crud.md -->
@@ -186,8 +192,16 @@
 
         <!-- Pestaña 2: reseñas (acordeón) -->
         <div x-show="pestana === 'resenas'" role="tabpanel">
-          <p x-show="cargandoResenas">Cargando reseñas...</p>
-          <p x-show="!cargandoResenas && errorResenas" class="text-red-700" x-text="errorResenas"></p>
+           <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
+  <div x-show="cargandoResenas" role="status" class="flex items-center gap-2 py-3">
+    <div class="animate-spin rounded-full border-2 border-solid border-sky-200 border-t-sky-600" style="width: 20px; height: 20px;"></div>
+    <p class="m-0 text-sm">Cargando reseñas...</p>
+  </div>
+  <div x-show="!cargandoResenas && errorResenas" class="py-3">
+    <p class="text-red-700 mt-0" x-text="errorResenas"></p>
+    <button type="button" class="index" @click="cargarResenas()">Reintentar</button>
+  </div>
+  <!-- [IA] fin -->
           <p x-show="!cargandoResenas && !errorResenas && resenas.length === 0" class="text-sm text-gray-600">
             Esta película aún no tiene reseñas. ¡Escribe la primera!
           </p>
@@ -378,7 +392,14 @@
           }
         },
         // [IA] fin
-
+        // [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md
+        limpiar() {
+          this.busqueda = '';
+          this.genero = '';
+          this.orden = 'rating_desc';
+          this.cargar();
+        },
+        // [IA] fin
         async cargar() {
           this.cargando = true;
           this.error = null;
