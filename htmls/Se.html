@@ -28,7 +28,7 @@
   <form @submit.prevent="iniciarSesion()">
     <div class="login_mail">
       <label for="mail">Correo</label>
-      <input type="email" id="mail" x-model="correo" required>
+      <input type="email" id="mail" x-model="mail" required>
     </div>
 
     <div class="login_pass">
@@ -41,7 +41,7 @@
   <p x-show="error" x-text="error" style="color: red; margin: 10px; font-size: 14px"></p>
 
   <button type="submit" :disabled = "cargando">
-    <span x-text="cargando ? 'Iniciando...' : 'Iniciar Sesion'></span>
+    <span x-text="cargando ? 'Iniciando...' : 'Iniciar Sesion'"></span>
   </button>
 
       </form>
