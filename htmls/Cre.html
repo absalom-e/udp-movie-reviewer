@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear cuenta</title>
     <link rel="stylesheet" href="/styles/create_account_style.css">
-     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body style = "padding-top: 20px">
@@ -44,7 +43,6 @@
 
       <p x-show="error" x-text="error" style="color: red; margin : 10px; font-size : 14px">Hubo un error durante la creacion de la cuenta, por favor vuelva a intentar mas tarde.</p>
       <p x-show="exito" style="color: green; margin : 10px; font-size : 14px">¡Cuenta creada con éxito! Redirigiendo...</p>
-      <button type="submit" :disabled="cargando">Crear cuenta</button>
 
 <!-- [IA] fin -->
 
@@ -103,6 +101,8 @@
     };
   };
 </script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
  </body>
 </html>
