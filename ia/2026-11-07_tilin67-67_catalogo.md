@@ -230,7 +230,7 @@ El siguiente paso natural es ir a **`htmls/Reseña.html`** para implementar:
 ## Qué se incorporó al proyecto
 - Se incorporó `htmls/catalogo.html` completo, de la respuesta 15.
 - La respuesta 16 no aportó código al repositorio: la herramienta editó archivos de seguimiento en el Escritorio, fuera del repositorio.
-- <COMPLETA si modificaste algo del HTML.>
+
 ## Verificación
  
 **Cómo lo probé**

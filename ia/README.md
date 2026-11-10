@@ -11,7 +11,7 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | 2026-11-07 | @tilin67-67 | Gemini | Catálogo con búsqueda, filtros y estados | [ver](2026-11-07_tilin67-67_catalogo.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del orden de carga de Alpine | [ver](2026-11-08_tilin67-67_alpine-orden-carga.md) |
 | 2026-11-08 | @tilin67-67 | Claude (Sonnet 5.5) | Corrección del filtro por género | [ver](2026-11-08_tilin67-67_filtro-genero.md) |
-| 2026-11-09 | @tilin67-67 | Claude | Menú de navegación compartido | [ver](2026-11-09_tilin67-67_menu-estatico.md) |
+| 2026-11-09 | @tilin67-67 | Claude(Sonnet 5.5) | Menú de navegación compartido | [ver](2026-11-09_tilin67-67_menu-estatico.md) |
 
 ## Archivos con código asistido por IA
 

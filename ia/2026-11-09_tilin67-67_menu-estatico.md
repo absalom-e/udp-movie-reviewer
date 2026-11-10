@@ -683,15 +683,13 @@ En esas tres páginas, que no tienen ningún `x-data` propio, poner Alpine en el
 - En `htmls/Se.html`, `htmls/Cre.html` y `htmls/Reseña.html`: los tres scripts de Tailwind y Alpine en el `<head>`, y el `<header>` con `fetch` que reemplaza al header de "volver al inicio".
 - En `htmls/catalogo.html`: solo el `<header>` con `fetch`. Los scripts de Tailwind y Alpine NO se agregan ahí, porque el catálogo ya los tiene.
 - Error cometido en la consulta: pegué el bloque de scripts también en `catalogo.html`, y eso hizo desaparecer las películas y los filtros, porque Alpine quedó cargado en el `<head>` antes de que existiera `catalogoApp()`, y quedaron Tailwind y Alpine duplicados. La respuesta 3 me indicó borrar ese bloque del catálogo.
-- <CONFIRMA aquí qué páginas ya modificaste de verdad y si borraste el bloque de scripts del catálogo. Borra esta línea al terminar.>
-- La corrección del botón `<button class="prueba">` del index que sugiere la respuesta 2: <indica si la aplicaste>.
+
 
 ## Verificación
 
 **Cómo lo probé**
 - Pegué el `<header>` del menú en `htmls/catalogo.html` y el menú se ve y los botones del menú funcionan.
 - Al pegar también el bloque de scripts en el catálogo, desaparecieron las películas y los filtros; lo reporté y se corrigió quitando ese bloque.
-- <ESCRIBE AQUÍ lo que probaste después de la corrección: por ejemplo, que las películas y filtros volvieron y si viste resaltada la página actual. Borra esta línea y deja solo lo que hiciste.>
 
 **Qué entiendo del código**
 - `<header id="menu-principal">` en `index.html` es la fuente única del menú. El `id` permite que las otras páginas lo encuentren dentro del index. `<header>`, `<nav>` y `<ul>` dan la estructura semántica.
