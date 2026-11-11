@@ -91,20 +91,29 @@
           comentario: '',
           enviando: false,
 
-          async init() {
-            const res = await obtenerPeliculas({ orden: 'az' });
-            if (!res.ok) {
-              mostrarToast(res.error, 'error');
-              return;
-            }
-            this.peliculas = res.data;
+async init() {
+         const usuario = obtenerUsuario();
+          if (!usuario) {
+          mostrarToast('Debes iniciar sesión para escribir una reseña.', 'error');
+          setTimeout(() => {
+          window.location.href = 'Se.html';
+          }, 600); 
+           return;  
+          }
 
-            const idUrl = Number(new URLSearchParams(location.search).get('peliculaId'));
-            if (idUrl) {
-              await this.$nextTick();
-              this.peliculaId = idUrl;
-            }
-          },
+          const res = await obtenerPeliculas({ orden: 'az' });
+          if (!res.ok) {
+          mostrarToast(res.error, 'error');
+          return;
+          }
+          this.peliculas = res.data;
+
+          const idUrl = Number(new URLSearchParams(location.search).get('peliculaId'));
+          if (idUrl) {
+               await this.$nextTick();
+               this.peliculaId = idUrl;
+          }
+},
 
           async enviar() {
             if (this.comentario.trim() === '') {
