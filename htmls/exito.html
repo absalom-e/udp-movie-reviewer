@@ -1,21 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear Reseña</title>
+    <title>Cuenta creada</title>
     <link rel="stylesheet" href="/styles/exito_style.css">
+  <script type="module" src="/js/menu.js"></script>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { corePlugins: { preflight: false } }
+    </script>
   </head>
+
+
+  
   <body style = "padding-top: 20px">
 
-    <div style = "text-align:center">
-
+    
+<header
+  x-data
+  x-init="fetch('/index.html')
+    .then(r => r.text())
+    .then(t => $el.replaceWith(new DOMParser().parseFromString(t, 'text/html').getElementById('menu-principal')))"
+></header>
+<main>
+  <div style = "text-align:center"> 
     <H1>¡Su cuenta ha sido creada exitosamente!</H1>
-
+      
         <a href="../index.html">  
         <button class = "index">volver al inicio</button> 
         </a> 
-
+  </div>
+      </main>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </body>
+</html>
