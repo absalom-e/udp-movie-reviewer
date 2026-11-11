@@ -29,7 +29,13 @@
 
  <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
 
-    <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
+<script type="module">
+  import { obtenerUsuario, logout } from '/js/api.js';
+  window.obtenerUsuario = obtenerUsuario;
+  window.logout = logout;
+</script>
+
+<!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
 <!-- [IA] inicio · ia/2026-11-10_tilin67-67_menu-desplegable.md -->
 <header
   id="menu-principal"
@@ -43,6 +49,18 @@
       { nombre: 'Ver catálogo',     ruta: '/htmls/catalogo.html' },
       { nombre: 'Hacer una reseña', ruta: '/htmls/Reseña.html' }
     ],
+    
+      usuario: null,
+      init(){
+
+        this.usuario = obtenerUsuario();
+
+      },
+      cerrarSesion(){
+        logout()
+        this.usuario = null;
+
+      },
     enlacesCuenta: [
       { nombre: 'Crear cuenta',   ruta: '/htmls/Cre.html' },
       { nombre: 'Iniciar sesión', ruta: '/htmls/Se.html' }
@@ -100,17 +118,21 @@
           style="display: none;"
           class="list-none m-0 p-1 mt-1 bg-white border border-sky-200 rounded shadow-lg md:absolute md:right-0 md:min-w-[11rem] z-20"
         >
-          <template x-for="e in enlacesCuenta" :key="e.ruta">
-            <li>
-              <a
-                :href="e.ruta"
-                x-text="e.nombre"
-                class="block px-3 py-1 rounded no-underline"
-                :class="esActual(e.ruta) ? 'bg-sky-500 text-white' : 'text-sky-600 hover:bg-sky-100'"
-                :aria-current="esActual(e.ruta) ? 'page' : null"
-              ></a>
-            </li>
+          <template x-if="usuario">
+           <div>
+             <li><span x-text="'Hola, ' + usuario.nombre"></span></li>
+             <li><button @click="cerrarSesion()">Cerrar sesión</button></li>
+           </div>
           </template>
+            
+          <template x-if="!usuario">
+           <div>
+            <template x-for="e in enlacesCuenta" :key="e.ruta">
+              <li><a :href="e.ruta" x-text="e.nombre"></a></li>
+            </template>
+           </div>
+         </template>
+
         </ul>
       </li>
     </ul>
