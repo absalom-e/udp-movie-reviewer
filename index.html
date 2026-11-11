@@ -26,11 +26,19 @@
 
  <!-- [IA] inicio · ia/2026-11-06_absalom-e_semantica-html.md -->
 
+<!-- [IA] inicio · ia/2026-11-11_tilin67-67_top-3-inicio.md -->
 <script type="module">
-  import { obtenerUsuario, logout } from '/js/api.js';
-  window.obtenerUsuario = obtenerUsuario;
-  window.logout = logout;
+
+import { obtenerUsuario, logout, obtenerPeliculas } from '/js/api.js';
+
+window.obtenerUsuario = obtenerUsuario;
+
+window.logout = logout;
+
+window.obtenerPeliculas = obtenerPeliculas;
+
 </script>
+<!-- [IA] fin -->
 
 <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
 <!-- [IA] inicio · ia/2026-11-10_tilin67-67_menu-desplegable.md -->
@@ -173,17 +181,93 @@
 
       </section>
 
-     <section id="accion-resena">
-        <h2>Crea una reseña</h2>
-        <p>¡Haz tu reseña aqui!.</p>
+<!-- [IA] inicio · ia/2026-11-11_tilin67-67_top-3-inicio.md -->
+<section
+    id="top-peliculas"
+    class="max-w-6xl mx-auto px-6 py-10"
+    x-data="{
+        peliculas: [],
+        cargando: true,
+        error: '',
 
-        <a href="htmls/Reseña.html">  
-        <button class = "Reseña">Hacer una reseña</button> 
-        </a>  
+        async init() {
+            try {
+                const respuesta = await window.obtenerPeliculas({
+                    orden: 'rating_desc'
+                });
 
-        <a href="htmls/prueba_menu_tutorial.html">  
-        <button class = "prueba">Ir a prueba</button>
-        </a>   
+                if (!respuesta.ok) {
+                    this.error = respuesta.error;
+                    return;
+                }
+
+                this.peliculas = respuesta.data.slice(0, 3);
+
+            } catch (error) {
+                this.error = 'No se pudieron cargar las películas.';
+            } finally {
+                this.cargando = false;
+            }
+        }
+    }"
+>
+    <h2 class="text-2xl font-bold text-sky-700 mb-2">
+        Las 3 mejores películas
+    </h2>
+
+    <p class="text-gray-600 mb-6">
+        Descubre las películas mejor calificadas de nuestro catálogo.
+    </p>
+
+    <!-- Estado de carga -->
+    <p x-show="cargando">
+        Cargando películas...
+    </p>
+
+    <!-- Estado de error -->
+    <p x-show="error" x-text="error" class="text-red-600"></p>
+
+    <!-- Películas cargadas -->
+    <div
+        x-show="!cargando && !error"
+        class="grid grid-cols-1 md:grid-cols-3 gap-6"
+    >
+        <template x-for="(pelicula, indice) in peliculas" :key="pelicula.id">
+            <article class="border border-sky-200 rounded-lg p-4 shadow-sm">
+
+                <h3
+                    class="text-lg font-bold text-sky-700 mb-3"
+                    x-text="(indice + 1) + '. ' + pelicula.titulo"
+                ></h3>
+
+                <img
+                    :src="pelicula.poster"
+                    :alt="'Póster de ' + pelicula.titulo"
+                    class="w-full h-72 object-contain mb-4"
+                >
+
+                <p>
+                    <strong>Director:</strong>
+                    <span x-text="pelicula.director"></span>
+                </p>
+
+                <p>
+                    <strong>Año:</strong>
+                    <span x-text="pelicula.anio"></span>
+                </p>
+
+                <p class="mt-2 text-lg font-bold text-sky-600">
+                    Calificación:
+                    <span x-text="pelicula.calificacion + '/10'"></span>
+                </p>
+
+            </article>
+        </template>
+    </div>
+</section>
+<!-- [IA] fin -->
+
+     
 
       </section>
     

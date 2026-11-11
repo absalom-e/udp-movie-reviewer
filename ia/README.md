@@ -16,13 +16,14 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | 2026-11-09 | @absalom-e | Antigravity (Gemini) | Flujo de login y registro con Alpine | [ver](2026-11-09_absalom-e_login-registro-alpine.md) |
 | 2026-11-10 | @tilin67-67 | Claude | Reseñas con CRUD, modal, pestañas, acordeón, toasts y carga incremental | [ver](2026-11-10_tilin67-67_resenas-crud.md) |
 | 2026-11-10 | @tilin67-67 | Claude | Menú desplegable "Cuenta" | [ver](2026-11-10_tilin67-67_menu-desplegable.md) |
+| 2026-11-11 | @tilin67-67 | ChatGPT (GPT-6) | Top 3 de películas mejor calificadas en la página de inicio | [ver](2026-11-11_tilin67-67_top-3-inicio.md) |
 
 
 ## Archivos con código asistido por IA
 
 | Archivo | Registro |
 |---|---|
-| `index.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md), [2026-11-07_tilin67-67_tailwind-alpine.md](2026-11-07_tilin67-67_tailwind-alpine.md) (bloque del `<head>` con Tailwind y Alpine), [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) y [2026-11-10_tilin67-67_menu-desplegable.md](2026-11-10_tilin67-67_menu-desplegable.md) |
+| `index.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md), [2026-11-07_tilin67-67_tailwind-alpine.md](2026-11-07_tilin67-67_tailwind-alpine.md) (bloque del `<head>` con Tailwind y Alpine), [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md), [2026-11-10_tilin67-67_menu-desplegable.md](2026-11-10_tilin67-67_menu-desplegable.md) y [2026-11-11_tilin67-67_top-3-inicio.md](2026-11-11_tilin67-67_top-3-inicio.md) |
 | `htmls/catalogo.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md), [2026-11-07_tilin67-67_tailwind-alpine.md](2026-11-07_tilin67-67_tailwind-alpine.md), [2026-11-07_tilin67-67_catalogo.md](2026-11-07_tilin67-67_catalogo.md), [2026-11-08_tilin67-67_alpine-orden-carga.md](2026-11-08_tilin67-67_alpine-orden-carga.md), [2026-11-08_tilin67-67_filtro-genero.md](2026-11-08_tilin67-67_filtro-genero.md), [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) y [2026-11-10_tilin67-67_resenas-crud.md](2026-11-10_tilin67-67_resenas-crud.md) |
 | `htmls/Cre.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
 | `htmls/Se.html` | [2026-11-06_absalom-e_semantica-html.md](2026-11-06_absalom-e_semantica-html.md) y [2026-11-09_tilin67-67_menu-estatico.md](2026-11-09_tilin67-67_menu-estatico.md) |
