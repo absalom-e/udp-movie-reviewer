@@ -33,30 +33,77 @@
 <!-- [IA] inicio · ia/2026-11-09_absalom-e_login-registro-alpine.md -->
 
     <section class="form" x-data="loginForm()">
-    <h1>Iniciar sesión</h1>
+  
 
 
-  <form @submit.prevent="iniciarSesion()">
+ 
+<section class="form" x-data="loginForm()">
+  <h1>Iniciar sesión</h1>
+<!--[IA] inicio · ia/2026-11-11_tilin67-67_forms-arregloapi.md-->
+  <form novalidate @submit.prevent="iniciarSesion()">
+
     <div class="login_mail">
       <label for="mail">Correo</label>
-      <input type="email" id="mail" x-model="mail" required>
+
+      <input
+        type="email"
+        id="mail"
+        x-ref="mail"
+        x-model="mail"
+        required
+        @blur="validarCampo('mail')"
+        @input="corregirCampo('mail')"
+        :aria-invalid="errores.mail !== ''"
+        aria-describedby="mail-error"
+      >
+
+      <p
+        id="mail-error"
+        x-show="errores.mail"
+        x-text="errores.mail"
+        role="alert"
+        style="color: red; margin: 5px; font-size: 14px"
+      ></p>
     </div>
 
     <div class="login_pass">
       <label for="clave">Contraseña</label>
-      <input type="password" id="clave" x-model="clave" minlength="8" required>
+
+      <input
+        type="password"
+        id="clave"
+        x-ref="clave"
+        x-model="clave"
+        minlength="8"
+        required
+        @blur="validarCampo('clave')"
+        @input="corregirCampo('clave')"
+        :aria-invalid="errores.clave !== ''"
+        aria-describedby="clave-error"
+      >
+
+      <p
+        id="clave-error"
+        x-show="errores.clave"
+        x-text="errores.clave"
+        role="alert"
+        style="color: red; margin: 5px; font-size: 14px"
+      ></p>
     </div>
 
-  <!-- [IA] fin -->
+    <p
+      x-show="error"
+      x-text="error"
+      style="color: red; margin: 10px; font-size: 14px"
+    ></p>
 
-  <p x-show="error" x-text="error" style="color: red; margin: 10px; font-size: 14px"></p>
+    <button type="submit" :disabled="cargando">
+      <span x-text="cargando ? 'Iniciando...' : 'Iniciar Sesión'"></span>
+    </button>
 
-  <button type="submit" :disabled = "cargando">
-    <span x-text="cargando ? 'Iniciando...' : 'Iniciar Sesion'"></span>
-  </button>
-
-      </form>
-      </section>
+  </form>
+</section>
+<!-- [IA] fin -->
 
 <section>
 
@@ -73,25 +120,105 @@
 
 <script type="module">
   import { login } from '/js/api.js';
-  window.loginForm = function() {
-    return {
+  // [IA] inicio · ia/2026-11-11_tilin67-67_forms-arregloapi.md
+  
+window.loginForm = function() {
+  return {
     mail: '',
     clave: '',
     error: null,
     cargando: false,
+
+    // Mensajes independientes para cada campo
+    errores: {
+      mail: '',
+      clave: ''
+    },
+
+    // Comprueba las reglas HTML de un campo
+    validarCampo(campo) {
+
+      const input = this.$refs[campo];
+      const estado = input.validity;
+
+      let mensaje = '';
+
+      if (estado.valueMissing) {
+
+        if (campo === 'mail') {
+          mensaje = 'Ingresa tu correo electrónico.';
+        } else {
+          mensaje = 'Ingresa tu contraseña.';
+        }
+
+      } else if (estado.typeMismatch) {
+
+        mensaje = 'Ingresa un correo electrónico válido.';
+
+      } else if (estado.tooShort) {
+
+        mensaje = 'La contraseña debe tener al menos ' +
+                  input.minLength + ' caracteres.';
+
+      } else if (!estado.valid) {
+
+        mensaje = 'Revisa el valor ingresado.';
+      }
+
+      // Guardamos el mensaje correspondiente
+      this.errores[campo] = mensaje;
+
+      return mensaje === '';
+    },
+
+    // Vuelve a validar cuando el usuario corrige un campo
+    corregirCampo(campo) {
+
+      if (this.errores[campo]) {
+        this.validarCampo(campo);
+      }
+    },
+
     async iniciarSesion() {
-      this.cargando = true;
+
       this.error = null;
-      const res = await login(this.mail, this.clave);
-      if (res.ok) {
-        window.location.href = '../index.html';
-      } else {
+
+      // Validamos ambos campos
+      const correoValido = this.validarCampo('mail');
+      const claveValida = this.validarCampo('clave');
+
+      // Si alguno está incorrecto, detenemos el proceso
+      if (!correoValido || !claveValida) {
+        return;
+      }
+
+      this.cargando = true;
+
+      try {
+
+        const res = await login(this.mail, this.clave);
+
+        if (res.ok) {
+          window.location.href = '../index.html';
+          return;
+        }
+
+        // Error de autenticación, no de formato
         this.error = res.error;
+
+      } catch (error) {
+
+        this.error = 'No se pudo completar el inicio de sesión.';
+
+      } finally {
+
         this.cargando = false;
+
       }
     }
   };
 };
+//- [IA] fin -->
 </script> 
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
