@@ -27,7 +27,7 @@
     "id": 4,
     "nombre": "Anton Ego",
     "correo": "A.Ego@LaCritique.fr",
-    "clave": "12345",
+    "clave": "12345678",
     "rol": "Critico Senior",
     "reputacion": 1850
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "nombre": "Usuario Normal",
     "correo": "U.Normal@gmail.com",
-    "clave": "12345",
+    "clave": "12345678",
     "rol": "Critico Junior",
     "reputacion": 200
   }
