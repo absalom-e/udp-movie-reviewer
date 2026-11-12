@@ -35,3 +35,5 @@ Este proyecto usó IA de forma consultiva, según la sección 10 de la pauta de 
 | `mocks/resenas.json` | [2026-11-07_absalom-e_esqueleto-mocks.md](2026-11-07_absalom-e_esqueleto-mocks.md) |
 | `htmls/Se.html` | [2026-11-09_absalom-e_login-registro-alpine.md](2026-11-09_absalom-e_login-registro-alpine.md) |
 | `htmls/Cre.html` | [2026-11-09_absalom-e_login-registro-alpine.md](2026-11-09_absalom-e_login-registro-alpine.md) |
+| `htmls/Cre.html` | [2026-11-10_absalom-e_menu-sesion-logout.md](2026-11-10_absalom-e_menu-sesion-logout.md) |
+

@@ -1,0 +1,5 @@
+## Aclaracion
+
+Este md tiene el proposito de aclarar algunos puntos importantes de lo que respecta al trabajo (Pues segun pauta, asi se me ha solicitado) y es que a pesar de que haya utilizado Anti-Gravity como el sistema de IA preferido para guiarme y hacer cambios al trabajo, a esta misma herramienta no le he dado ningun permiso de modificar o alterar el repositorio original. Todos los prompts y preguntas se han ido entregandole a traves de carpetas y archivos locales a traves de mi dispositivo la informacion relevante para responder preguntas y que el sistema tenga contextualizacion suficiente para poder responder claramente y de manera coherente con el proyecto.
+
+Es decir, que el modo de auto-completado se encuentra totalmente desactivadas durante la totalidad de la elaboracion del trabajo, Anti-gravity se ha usado de manera consultiva, asi como tambien no ha existido una modificacion autonoma del repositorio por parte de antigravity.
