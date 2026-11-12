@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear cuenta</title>
     <link rel="stylesheet" href="/styles/create_account_style.css">
+      <!--[IA] inicio · ia/2026-11-11_tilin67-67_sacaracceso-localstorage.md-->
+  <script type="module" src="/js/menu.js"></script>
+  <!--[IA] fin-->
     <!-- [IA] inicio · ia/2026-11-09_tilin67-67_menu-estatico.md -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -31,55 +34,200 @@
     <main style="text-align: center">
 
 <!-- [IA] inicio · ia/2026-11-09_absalom-e_login-registro-alpine.md -->
+ <!--[IA] inicio · ia/2026-11-11_tilin67-67_forms-arregloapi.md-->
+    
+<section class="form" x-data="registroForm()">
+  <h1>Crea tu cuenta</h1>
 
-    <section class="form" x-data="registroForm()">
-    <h1>Crea tu cuenta</h1>
-        
-    <form @submit.prevent="crearCuenta()">
-      <div class="register_mail">
-        <label for="mail">Correo</label>
-        <input type="email" id="mail" x-model="correo" required>
-      </div>
+  <form novalidate @submit.prevent="crearCuenta()">
 
-      <div class="register_password">
-        <label for="clave">Contraseña</label>
-        <input type="password" id="clave" x-model="clave" minlength="8" required>
-      </div>
+    <div class="register_mail">
+      <label for="mail">Correo</label>
 
-      <div class="register_name">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" x-model="nombre" required>
-      </div>
+      <input
+        type="email"
+        id="mail"
+        x-ref="correo"
+        x-model="correo"
+        required
+        @blur="validarCampo('correo')"
+        @input="corregirCampo('correo')"
+        :aria-invalid="errores.correo !== ''"
+        aria-describedby="correo-error"
+      >
 
-      <p x-show="error" x-text="error" style="color: red; margin : 10px; font-size : 14px">Hubo un error durante la creacion de la cuenta, por favor vuelva a intentar mas tarde.</p>
-      <p x-show="exito" style="color: green; margin : 10px; font-size : 14px">¡Cuenta creada con éxito! Redirigiendo...</p>
+      <p
+        id="correo-error"
+        x-show="errores.correo"
+        x-text="errores.correo"
+        role="alert"
+        style="color: red; margin: 5px; font-size: 14px"
+      ></p>
+    </div>
 
-<!-- [IA] fin -->
+    <div class="register_password">
+      <label for="clave">Contraseña</label>
 
-  <button type="submit" :disabled="cargando">
-    <span x-text="cargando ? 'Creando cuenta...' : 'Crear cuenta'"></span>
-  </button>
+      <input
+        type="password"
+        id="clave"
+        x-ref="clave"
+        x-model="clave"
+        minlength="8"
+        required
+        @blur="validarCampo('clave')"
+        @input="corregirCampo('clave')"
+        :aria-invalid="errores.clave !== ''"
+        aria-describedby="clave-error"
+      >
 
-     
-      </form>
-    </section>
+      <p
+        id="clave-error"
+        x-show="errores.clave"
+        x-text="errores.clave"
+        role="alert"
+        style="color: red; margin: 5px; font-size: 14px"
+      ></p>
+    </div>
+
+    <div class="register_name">
+      <label for="nombre">Nombre</label>
+
+      <input
+        type="text"
+        id="nombre"
+        x-ref="nombre"
+        x-model="nombre"
+        required
+        @blur="validarCampo('nombre')"
+        @input="corregirCampo('nombre')"
+        :aria-invalid="errores.nombre !== ''"
+        aria-describedby="nombre-error"
+      >
+
+      <p
+        id="nombre-error"
+        x-show="errores.nombre"
+        x-text="errores.nombre"
+        role="alert"
+        style="color: red; margin: 5px; font-size: 14px"
+      ></p>
+    </div>
+
+    <p
+      x-show="error"
+      x-text="error"
+      style="color: red; margin: 10px; font-size: 14px"
+    ></p>
+
+    <p
+      x-show="exito"
+      style="color: green; margin: 10px; font-size: 14px"
+    >
+      ¡Cuenta creada con éxito! Redirigiendo...
+    </p>
+
+    <button type="submit" :disabled="cargando">
+      <span x-text="cargando ? 'Creando cuenta...' : 'Crear cuenta'"></span>
+    </button>
+
+  </form>
+</section>
+
+    
+    <!-- [IA] fin -->
    </main>
 
 <!-- [IA] inicio · ia/2026-11-10_tilin67-67_capa-servicios.md -->
 <script type="module">
   import { registrarUsuario } from '/js/api.js';
+//<!--[IA] inicio · ia/2026-11-11_tilin67-67_forms-arregloapi.md-->
+  
+window.registroForm = function() {
+  return {
+    nombre: '',
+    correo: '',
+    clave: '',
+    error: null,
+    exito: false,
+    cargando: false,
 
-  window.registroForm = function() {
-    return {
+    errores: {
       nombre: '',
       correo: '',
-      clave: '',
-      error: null,
-      exito: false,
-      cargando: false,
-      async crearCuenta() {
-        this.cargando = true;
-        this.error = null;
+      clave: ''
+    },
+
+    validarCampo(campo) {
+
+      const input = this.$refs[campo];
+      const estado = input.validity;
+
+      let mensaje = '';
+
+      // Comprobación adicional: nombre con solo espacios
+      if (campo === 'nombre' && input.value.trim() === '') {
+
+        mensaje = 'Ingresa tu nombre. No puede contener solamente espacios.';
+
+      } else if (estado.valueMissing) {
+
+        if (campo === 'nombre') {
+          mensaje = 'El nombre es obligatorio.';
+        } else if (campo === 'correo') {
+          mensaje = 'Ingresa tu correo electrónico.';
+        } else {
+          mensaje = 'Ingresa una contraseña.';
+        }
+
+      } else if (estado.typeMismatch) {
+
+        mensaje = 'Ingresa un correo electrónico válido.';
+
+      } else if (estado.tooShort) {
+
+        mensaje = 'La contraseña debe tener al menos ' +
+                  input.minLength + ' caracteres.';
+
+      } else if (!estado.valid) {
+
+        mensaje = 'Revisa el valor ingresado.';
+
+      }
+
+      this.errores[campo] = mensaje;
+
+      return mensaje === '';
+    },
+
+    corregirCampo(campo) {
+
+      if (this.errores[campo]) {
+        this.validarCampo(campo);
+      }
+    },
+
+    async crearCuenta() {
+
+      this.error = null;
+
+      // Validamos todos los campos independientemente
+      this.validarCampo('nombre');
+      this.validarCampo('correo');
+      this.validarCampo('clave');
+
+      // Si alguno tiene errores, no registramos
+      if (
+        this.errores.nombre ||
+        this.errores.correo ||
+        this.errores.clave
+      ) {
+        return;
+      }
+
+      this.cargando = true;
+
+      try {
 
         const res = await registrarUsuario({
           nombre: this.nombre,
@@ -88,18 +236,36 @@
         });
 
         if (!res.ok) {
-          this.error = res.error;
-          this.cargando = false;
+
+          // El correo ya está registrado
+          if (res.status === 409) {
+            this.errores.correo = res.error;
+          } else {
+            this.error = res.error;
+          }
+
           return;
         }
 
         this.exito = true;
+
         setTimeout(() => {
           window.location.href = 'exito.html';
         }, 1200);
+
+      } catch (error) {
+
+        this.error = 'No se pudo completar el registro.';
+
+      } finally {
+
+        this.cargando = false;
+
       }
-    };
+    }
   };
+};
+
 </script>
 <!-- [IA] fin -->
 
