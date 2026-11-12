@@ -281,8 +281,8 @@ x-show="usuario"
     >
   <h2>Tus reseñas publicadas</h2>
   <p x-show="cargando">Cargando tus reseñas...</p>
-   <div x-show="!cargando && misResenas.length > 0">
-     <template x-for="r in misResenas" :key="r.id">
+   <div x-show="!cargando && resenas.length > 0">
+     <template x-for="r in resenas" :key="r.id">
       <div>
         <p><strong>Nota:</strong> <span x-text="r.calificacion"></span> / 10</p>
         <p x-text="r.comentario"></p>
@@ -291,7 +291,7 @@ x-show="usuario"
      </template>
    </div>
  
-   <div x-show="!cargando && misResenas.length === 0">
+   <div x-show="!cargando && resenas.length === 0">
      <p>Aún no has escrito ninguna reseña. ¡Visita el catálogo para reseñar!</p>
    </div>
 
