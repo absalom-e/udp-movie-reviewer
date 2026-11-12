@@ -104,7 +104,7 @@ window.obtenerResenas = obtenerResenas;
           <template x-if="usuario">
            <div>
              <li><span x-text="'Hola, ' + usuario.nombre"></span></li>
-             <li><button @click="cerrarSesion()">Cerrar sesión</button></li>
+             <li><button @click="cerrarSesion()" class="logoff">Cerrar sesión</button></li>
            </div>
           </template>
             
