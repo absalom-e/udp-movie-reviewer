@@ -36,7 +36,7 @@ También se puede crear una cuenta nueva en "Cuenta > Crear cuenta".
 |---|---|---|
 | Inicio | `/index.html` | Logo o "Inicio" del menú |
 | Catálogo | `/htmls/catalogo.html` | Menú "Ver catálogo" |
-| Hacer una reseña | `/htmls/Reseña.html` | Menú, o "Escribir reseña" en una película |
+| Hacer una reseña | `/htmls/resena.html` | Menú, o "Escribir reseña" en una película |
 | Crear cuenta | `/htmls/Cre.html` | Menú "Cuenta > Crear cuenta" |
 | Iniciar sesión | `/htmls/Se.html` | Menú "Cuenta > Iniciar sesión" |
 | Cuenta creada | `/htmls/exito.html` | Al terminar el registro |

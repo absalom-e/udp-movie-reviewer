@@ -126,7 +126,7 @@
             </p>
             <p style="margin: 0 0 12px 0; font-size: 12px; color: #666;" x-text="p.sinopsis"></p>
           </div>
-          <a :href="'Reseña.html?peliculaId=' + p.id" style="text-align: center;">
+          <a :href="'resena.html?peliculaId=' + p.id" style="text-align: center;">
             <button class="Reseña" style="width: 100%;">Escribir reseña</button>
           </a>
         </div>
@@ -261,7 +261,7 @@
         </div>
 
         <div class="flex gap-2 justify-end mt-4">
-          <a :href="'Reseña.html?peliculaId=' + peliculaSel.id">
+          <a :href="'resena.html?peliculaId=' + peliculaSel.id">
             <button type="button" class="Reseña">Escribir reseña</button>
           </a>
           <button type="button" class="index" @click="cerrarModal()">Cerrar</button>

@@ -17,7 +17,7 @@ document.addEventListener('alpine:init', () => {
     enlaces: [
       { nombre: 'Inicio', ruta: '/index.html' },
       { nombre: 'Ver catálogo', ruta: '/htmls/catalogo.html' },
-      { nombre: 'Hacer una reseña', ruta: '/htmls/Reseña.html' }
+      { nombre: 'Hacer una reseña', ruta: '/htmls/resena.html' }
     ],
 
     // Usuario que tiene la sesión iniciada
