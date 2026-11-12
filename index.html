@@ -31,13 +31,15 @@
    <!--[IA] inicio · ia/2026-11-11_tilin67-67_sacaracceso-localstorage.md-->
 <script type="module">
 
-import { obtenerUsuario, logout, obtenerPeliculas } from '/js/api.js';
+import { obtenerUsuario, logout, obtenerPeliculas, obtenerResenas } from '/js/api.js';
 
 window.obtenerUsuario = obtenerUsuario;
 
 window.logout = logout;
 
 window.obtenerPeliculas = obtenerPeliculas;
+
+window.obtenerResenas = obtenerResenas;
 
 </script>
 <!-- [IA] fin -->
@@ -243,6 +245,58 @@ window.obtenerPeliculas = obtenerPeliculas;
 </section>
 <!-- [IA] fin -->
 
+<!-- [IA] inicio · ia/2026-11-11_absalom-e_dashboard-resenas-usuario.md -->
+<section
+  id="mis-resenas-usuario"
+  class="max-w-6xl mx-auto px-6 py-6 text-left"
+  x-data="{
+    usuario: null,
+    resenas: [],
+    cargando: true,
+    error: '',
+    async init() {
+      this.usuario = window.obtenerUsuario();
+    if (!this.usuario) {
+      this.cargando = false;
+      return;
+    }
+    try {
+      const respuesta = await window.obtenerResenas();
+    if (!respuesta.ok) {
+      this.error = respuesta.error;
+      return;
+    }
+          
+    this.resenas = respuesta.data.filter(
+      r => r.autor.toLowerCase() === this.usuario.nombre.toLowerCase()
+    );
+    } catch (err) {
+      this.error = 'No se pudieron cargar tus reseñas.';
+    } finally {
+      this.cargando = false;
+    }
+  }
+}"
+x-show="usuario"
+    >
+  <h2>Tus reseñas publicadas</h2>
+  <p x-show="cargando">Cargando tus reseñas...</p>
+   <div x-show="!cargando && misResenas.length > 0">
+     <template x-for="r in misResenas" :key="r.id">
+      <div>
+        <p><strong>Nota:</strong> <span x-text="r.calificacion"></span> / 10</p>
+        <p x-text="r.comentario"></p>
+        <small x-text="r.fecha"></small>
+      </div>
+     </template>
+   </div>
+ 
+   <div x-show="!cargando && misResenas.length === 0">
+     <p>Aún no has escrito ninguna reseña. ¡Visita el catálogo para reseñar!</p>
+   </div>
+
+    </section>
+    <!-- [IA] fin -->
      
 
       </section>
