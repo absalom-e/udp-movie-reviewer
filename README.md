@@ -15,7 +15,7 @@ Plataforma web para reseñar películas, series y otros medios audiovisuales. Pr
 
 ## Instalación y ejecución
 ```bash
-git clone https://github.com/tilin67-67/udp-movie-reviewer.git
+git clone https://github.com/absalom-e/udp-movie-reviewer.git
 cd udp-movie-reviewer
 npm install
 npm run dev
