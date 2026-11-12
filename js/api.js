@@ -3,7 +3,9 @@
 const LATENCIA = 500;            // ms (la pauta pide entre 300 y 800)
 const PROBABILIDAD_FALLA = 0;    // 0 = nunca falla; 0.2 = falla 1 de cada 5 llamadas
 const VERSION_MOCKS = '1';       // súbela cada vez que cambies algo dentro de mocks/
-
+// [IA] inicio · ia/2026-11-11_tilin67-67_forms-arregloapi.md
+const VERSION_USUARIOS = '2';    // súbela cada vez que cambies algo dentro de mocks/
+ // [IA] fin 
 const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // ---------- Utilidades internas (no se exportan) ----------
@@ -27,6 +29,12 @@ async function cargarDatosIniciales() {
     ['peliculas', 'resenas', 'usuarios'].forEach((c) => localStorage.removeItem(c));
     localStorage.setItem('mocks_version', VERSION_MOCKS);
   }
+  // [IA] inicio · ia/2026-11-10_tilin67-67_forms-arregloapi.md
+  if (localStorage.getItem('usuarios_version') !== VERSION_USUARIOS) {
+  localStorage.removeItem('usuarios');
+  localStorage.setItem('usuarios_version', VERSION_USUARIOS);
+}
+ // [IA] fin 
   await Promise.all([
     sembrar('peliculas', '/mocks/peliculas.json'),
     sembrar('resenas', '/mocks/resenas.json'),
